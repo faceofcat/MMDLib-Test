@@ -1,0 +1,2 @@
+rootProject.name = 'MMDLib - TEST'
+include 'MMDLib'

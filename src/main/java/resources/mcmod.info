@@ -1,0 +1,15 @@
+[{
+  "modid": "mmdlib_test",
+  "name": "MMDLib Test",
+  "description": "A mod that provides test thing for MMD Lib.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": [ "Face_of_Cat" ],
+  "credits": "The Forge and my mom.",
+  "logoFile": "",
+  "screenshots": [],
+  "requiredMods": [ "mmdlib" ],
+  "dependencies": [ "mmdlib" ]
+}]

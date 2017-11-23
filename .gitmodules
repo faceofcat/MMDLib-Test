@@ -1,0 +1,3 @@
+[submodule "MMDLib"]
+	path = MMDLib
+	url = https://github.com/faceofcat/MMDLib.git

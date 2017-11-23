@@ -1,0 +1,88 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url = "http://files.minecraftforge.net/maven" }
+        maven { url = "http://repo.maven.apache.org/maven2" }
+        maven { url = "https://oss.sonatype.org/content/repositories/snapshots/" }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+    }
+}
+apply plugin: "net.minecraftforge.gradle.forge"
+apply plugin: "maven-publish"
+apply plugin: "maven"
+
+archivesBaseName = project.mod_name.replace(' ', '-').toLowerCase()
+group = "net.ndrei"
+
+version = "${project.minecraft_version}-${project.mod_version}"
+if (project.hasProperty('mod_suffix')) {
+    version += "-${project.mod_suffix}"
+}
+
+compileJava { sourceCompatibility = targetCompatibility = "1.8" }
+
+minecraft {
+    version = "${project.minecraft_version}-${project.forge_version}"
+    mappings = "${project.mcp_version}"
+    runDir = "run"
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    jcenter()
+    maven { name='mine'; url='https://maven.modcrafters.net' }
+
+    maven { name='jei'; url="http://dvs1.progwml6.com/files/maven" }
+    maven { name="hwyla"; url="http://tehnut.info/maven" }
+    maven { name="TOP"; url="http://maven.tterrag.com/" }
+}
+
+dependencies {
+    compile project(':MMDLib')
+
+    // JEI Stuff
+    // Versions from http://minecraft.curseforge.com/projects/just-enough-items-jei/files
+    compileOnly "mezz.jei:jei_${project.minecraft_version}:${project.jei_version}:api"
+    runtime "mezz.jei:jei_${project.minecraft_version}:${project.jei_version}"
+
+    // HWYLA
+    compileOnly "mcp.mobius.waila:Hwyla:${project.hwyla_version}:api"
+    runtime "mcp.mobius.waila:Hwyla:${project.hwyla_version}"
+
+    // The One Probe Stuff
+    compileOnly ("mcjty.theoneprobe:TheOneProbe-1.12:${project.top_version}:api") {
+        exclude group: 'cofh'
+    }
+    runtime ("mcjty.theoneprobe:TheOneProbe-1.12:${project.top_version}") {
+        exclude group: 'cofh'
+    }
+}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include '**/*.info'
+        include '**/*.properties'
+
+        // replace version and mcversion
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+
+    from(sourceSets.main.resources.srcDirs) {
+        exclude '**/*.info'
+        exclude '**/*.properties'
+    }
+}
+
+if (System.getProperty("runClient.jvmArgs") != null) {
+    runClient.jvmArgs System.getProperty("runClient.jvmArgs").split(" ")
+}
+
+if (System.getProperty("runServer.jvmArgs") != null) {
+    runServer.jvmArgs System.getProperty("runServer.jvmArgs").split(" ")
+}
