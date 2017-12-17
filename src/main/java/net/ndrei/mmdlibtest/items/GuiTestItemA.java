@@ -1,23 +1,32 @@
 package net.ndrei.mmdlibtest.items;
 
-import java.util.List;
-import com.google.common.collect.Lists;
-import com.mcmoddev.lib.container.IPlayerInventoryProvider;
-import com.mcmoddev.lib.container.MMDContainer;
+import java.awt.Color;
+import javax.annotation.ParametersAreNonnullByDefault;
 import com.mcmoddev.lib.container.PlayerInventory;
-import com.mcmoddev.lib.container.PlayerInventoryInfo;
+import com.mcmoddev.lib.feature.IFeatureHolder;
+import com.mcmoddev.lib.feature.IItemStackFeatureHolder;
+import com.mcmoddev.lib.feature.ItemInventoryFeature;
+import com.mcmoddev.lib.gui.IItemStackGuiProvider;
+import com.mcmoddev.lib.inventory.PlayerInventoryFeature;
 import com.mcmoddev.lib.item.MMDItemWithGui;
+import mcp.MethodsReturnNonnullByDefault;
 
-public class GuiTestItemA extends MMDItemWithGui implements IPlayerInventoryProvider {
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
+public class GuiTestItemA extends MMDItemWithGui implements IItemStackGuiProvider, IItemStackFeatureHolder {
     @Override
-    public List<PlayerInventoryInfo> getPlayerSlots(MMDContainer container) {
-        List<PlayerInventoryInfo> list = Lists.newArrayList();
+    public void initFeatures(IFeatureHolder holder) {
+        holder.addFeature(new ItemInventoryFeature("input", 9))
+            .setSlotPositions(0, 0, 3)
+            .setOverlayColor(Color.GREEN.getRGB(), 42);
+        holder.addFeature(new ItemInventoryFeature("output", 9))
+            .setSlotPositions(18 * 6, 0, 3)
+            .setOverlayColor(Color.RED.getRGB(), 42);
 
-        list.add(new PlayerInventoryInfo(PlayerInventory.INVENTORY, 0, 18, 9));
-        list.add(new PlayerInventoryInfo(PlayerInventory.QUICKBAR, 0, 18 * 4 + 4, 9));
-        list.add(new PlayerInventoryInfo(PlayerInventory.EQUIPMENT, 18 * 9 + 4, 0, 1));
-        list.add(new PlayerInventoryInfo(PlayerInventory.OFF_HAND, 18 * 9 + 4, 18 * 4 + 4, 1));
-
-        return list;
+        int offset = 18 * 2 + 7;
+        holder.addFeature(new PlayerInventoryFeature(PlayerInventory.INVENTORY, 0, offset + 18, 9));
+        holder.addFeature(new PlayerInventoryFeature(PlayerInventory.QUICKBAR, 0, offset + 18 * 4 + 4, 9));
+        holder.addFeature(new PlayerInventoryFeature(PlayerInventory.EQUIPMENT, 18 * 9 + 4, offset, 1));
+        holder.addFeature(new PlayerInventoryFeature(PlayerInventory.OFF_HAND, 18 * 9 + 4, offset + 18 * 4 + 4, 1));
     }
 }
