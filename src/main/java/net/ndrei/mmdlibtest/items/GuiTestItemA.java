@@ -2,12 +2,12 @@ package net.ndrei.mmdlibtest.items;
 
 import java.awt.Color;
 import javax.annotation.ParametersAreNonnullByDefault;
-import com.mcmoddev.lib.container.PlayerInventory;
 import com.mcmoddev.lib.feature.IFeatureHolder;
 import com.mcmoddev.lib.feature.IItemStackFeatureHolder;
 import com.mcmoddev.lib.feature.ItemInventoryFeature;
+import com.mcmoddev.lib.feature.PlayerInventoryFeature;
 import com.mcmoddev.lib.gui.IItemStackGuiProvider;
-import com.mcmoddev.lib.inventory.PlayerInventoryFeature;
+import com.mcmoddev.lib.gui.PlayerInventory;
 import com.mcmoddev.lib.item.MMDItemWithGui;
 import mcp.MethodsReturnNonnullByDefault;
 
@@ -17,10 +17,10 @@ public class GuiTestItemA extends MMDItemWithGui implements IItemStackGuiProvide
     @Override
     public void initFeatures(IFeatureHolder holder) {
         holder.addFeature(new ItemInventoryFeature("input", 9))
-            .setSlotPositions(0, 0, 3)
+            .setColumns(3)
             .setOverlayColor(Color.GREEN.getRGB(), 42);
         holder.addFeature(new ItemInventoryFeature("output", 9))
-            .setSlotPositions(18 * 6, 0, 3)
+            .setColumns(3)
             .setOverlayColor(Color.RED.getRGB(), 42);
 
         int offset = 18 * 2 + 7;
