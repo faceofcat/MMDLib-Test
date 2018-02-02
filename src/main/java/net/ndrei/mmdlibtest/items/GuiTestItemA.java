@@ -2,12 +2,12 @@ package net.ndrei.mmdlibtest.items;
 
 import java.awt.Color;
 import javax.annotation.ParametersAreNonnullByDefault;
+import com.mcmoddev.lib.container.IItemStackGuiProvider;
+import com.mcmoddev.lib.container.PlayerInventory;
 import com.mcmoddev.lib.feature.IFeatureHolder;
 import com.mcmoddev.lib.feature.IItemStackFeatureHolder;
 import com.mcmoddev.lib.feature.ItemInventoryFeature;
 import com.mcmoddev.lib.feature.PlayerInventoryFeature;
-import com.mcmoddev.lib.gui.IItemStackGuiProvider;
-import com.mcmoddev.lib.gui.PlayerInventory;
 import com.mcmoddev.lib.item.MMDItemWithGui;
 import mcp.MethodsReturnNonnullByDefault;
 

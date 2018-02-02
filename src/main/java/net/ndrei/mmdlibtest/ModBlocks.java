@@ -11,10 +11,12 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.ndrei.mmdlibtest.blocks.GuiTestBlockA;
+import net.ndrei.mmdlibtest.blocks.GuiTestBlockB;
 
 @Mod.EventBusSubscriber
 public enum ModBlocks implements Supplier<Block> {
-    GUI_TEST_A(GuiTestBlockA::new);
+    GUI_TEST_A(GuiTestBlockA::new),
+    GUI_TEST_B(GuiTestBlockB::new);
 
     private Supplier<Block> supplier;
     private Block instance = null;
