@@ -23,10 +23,9 @@ public class GuiTestItemA extends MMDItemWithGui implements IItemStackGuiProvide
             .setColumns(3)
             .setOverlayColor(Color.RED.getRGB(), 42);
 
-        int offset = 18 * 2 + 7;
-        holder.addFeature(new PlayerInventoryFeature(PlayerInventory.INVENTORY, 0, offset + 18, 9));
-        holder.addFeature(new PlayerInventoryFeature(PlayerInventory.QUICKBAR, 0, offset + 18 * 4 + 4, 9));
-        holder.addFeature(new PlayerInventoryFeature(PlayerInventory.EQUIPMENT, 18 * 9 + 4, offset, 1));
-        holder.addFeature(new PlayerInventoryFeature(PlayerInventory.OFF_HAND, 18 * 9 + 4, offset + 18 * 4 + 4, 1));
+        holder.addFeature(new PlayerInventoryFeature(PlayerInventory.INVENTORY, 9));
+        holder.addFeature(new PlayerInventoryFeature(PlayerInventory.QUICKBAR, 9));
+        holder.addFeature(new PlayerInventoryFeature(PlayerInventory.EQUIPMENT, 1));
+        holder.addFeature(new PlayerInventoryFeature(PlayerInventory.OFF_HAND, 1));
     }
 }

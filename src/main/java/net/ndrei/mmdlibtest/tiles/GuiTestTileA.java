@@ -6,9 +6,7 @@ import com.mcmoddev.lib.container.PlayerInventory;
 import com.mcmoddev.lib.container.gui.FeatureWrapperGui;
 import com.mcmoddev.lib.container.gui.GuiContext;
 import com.mcmoddev.lib.container.gui.IWidgetGui;
-import com.mcmoddev.lib.container.gui.TextButtonWidgetGui;
 import com.mcmoddev.lib.container.gui.layout.GridLayout;
-import com.mcmoddev.lib.container.gui.layout.HorizontalStackLayout;
 import com.mcmoddev.lib.container.gui.layout.VerticalStackLayout;
 import com.mcmoddev.lib.container.gui.util.Padding;
 import com.mcmoddev.lib.feature.FluidTankFeature;
@@ -34,7 +32,7 @@ public class GuiTestTileA extends MMDFeaturesTileEntity {
         this.addFeature(new FluidTankFeature("fluid_a", 5000, null, null));
         this.addFeature(new FluidTankFeature("fluid_b", 5000, null, null));
 
-        this.addFeature(new PlayerInventoryFeature(PlayerInventory.QUICKBAR, 0, 18 * 2 + 8, 9));
+        this.addFeature(new PlayerInventoryFeature(PlayerInventory.QUICKBAR, 9));
     }
 
     @Override
@@ -51,12 +49,12 @@ public class GuiTestTileA extends MMDFeaturesTileEntity {
             .addPiece(new FeatureWrapperGui(context, this, "player_quickbar")
                 .setPadding(Padding.top(7))
             )
-            .addPiece(new HorizontalStackLayout()
-                .addPiece(new TextButtonWidgetGui("Add Lava", 75))
-                .addPiece(new TextButtonWidgetGui("Add Water", 75))
-                .addPiece(new TextButtonWidgetGui("Clear Fluids", 75))
-                .setPadding(Padding.top(7))
-            )
+//            .addPiece(new HorizontalStackLayout()
+//                .addPiece(new TextButtonWidgetGui("Add Lava", 75))
+//                .addPiece(new TextButtonWidgetGui("Add Water", 75))
+//                .addPiece(new TextButtonWidgetGui("Clear Fluids", 75))
+//                .setPadding(Padding.top(7))
+//            )
 //            .addPiece(new TextboxPiece(200))
 //            .addPiece(new TextboxPiece(200, 5))
             ;
