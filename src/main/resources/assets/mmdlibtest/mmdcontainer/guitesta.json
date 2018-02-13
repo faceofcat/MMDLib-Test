@@ -1,0 +1,16 @@
+{
+  "gui": {
+    "vertical": [
+      {
+        "grid": [
+          { "feature": { "key": "inputs_1", "column": 0, "row": 1, "columnSpan": 2, "rowSpan": 2 } },
+          { "feature": { "key": "inputs_2", "column": 3, "row": 1, "columnSpan": 3, "rowSpan": 2 } },
+          { "feature": { "key": "inputs_3", "column": 7, "row": 1, "columnSpan": 2, "rowSpan": 2 } },
+          { "feature": { "key": "fluid_a", "column": 2, "row": 0, "columnSpan": 1, "rowSpan": 3 } },
+          { "feature": { "key": "fluid_b", "column": 6, "row": 0, "columnSpan": 1, "rowSpan": 3 } }
+        ]
+      },
+      { "feature": { "key": "player_quickbar", "column": 6, "row": 0, "columnSpan": 1, "rowSpan": 3, "padding": { "top": 7 } } }
+    ]
+  }
+}
