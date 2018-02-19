@@ -18,6 +18,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.ndrei.mmdlibtest.MMDLibTest;
 
 public class GuiTestTileA extends MMDFeaturesTileEntity {
+    public GuiTestTileA() {
+        super();
+    }
+
     @Override
     protected void initFeatures() {
         super.initFeatures();
