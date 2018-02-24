@@ -34,10 +34,15 @@ repositories {
     mavenLocal()
     jcenter()
     maven { name='mine'; url='https://maven.modcrafters.net' }
+    maven { name='forgelin'; url='http://maven.shadowfacts.net/' }
 
     maven { name='jei'; url="http://dvs1.progwml6.com/files/maven" }
     maven { name="hwyla"; url="http://tehnut.info/maven" }
     maven { name="TOP"; url="http://maven.tterrag.com/" }
+
+    maven { name='Chickenbones Repo'; url='http://chickenbones.net/maven/' }
+    maven { name='Covers Maven'; url='http://maven.covers1624.net' }
+    maven { name='jared maven'; url='http://blamejared.com/maven' }
 }
 
 dependencies {
@@ -58,6 +63,19 @@ dependencies {
     }
     runtime ("mcjty.theoneprobe:TheOneProbe-1.12:${project.top_version}") {
         exclude group: 'cofh'
+    }
+
+    runtime ("net.ndrei:powered-thingies:1.12.2+:deobf") {
+        exclude group: "mezz.jei"
+    }
+    runtime ("codechicken:CodeChickenLib:1.12.2+:universal")
+    runtime ("cofh:ThermalExpansion:1.12.2+:universal") {
+        exclude group: "mezz.jei"
+        exclude group: "codechicken"
+    }
+    runtime ("cofh:ThermalDynamics:1.12.2+:universal") {
+        exclude group: "mezz.jei"
+        exclude group: "codechicken"
     }
 }
 
