@@ -12,16 +12,18 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.ndrei.mmdlibtest.blocks.GuiTestBlockA;
 import net.ndrei.mmdlibtest.blocks.GuiTestBlockB;
+import net.ndrei.mmdlibtest.blocks.GuiTestBlockC;
 
 @Mod.EventBusSubscriber
 public enum ModBlocks implements Supplier<Block> {
     GUI_TEST_A(GuiTestBlockA::new),
-    GUI_TEST_B(GuiTestBlockB::new);
+    GUI_TEST_B(GuiTestBlockB::new),
+    GUI_TEST_C(GuiTestBlockC::new);
 
-    private Supplier<Block> supplier;
+    private final Supplier<Block> supplier;
     private Block instance = null;
 
-    ModBlocks(Supplier<Block> supplier) {
+    ModBlocks(final Supplier<Block> supplier) {
         this.supplier = supplier;
     }
 
@@ -31,8 +33,8 @@ public enum ModBlocks implements Supplier<Block> {
     }
 
     @SubscribeEvent
-    public static void registerBlocks(RegistryEvent.Register<Block> ev) {
-        for (ModBlocks block : ModBlocks.values()) {
+    public static void registerBlocks(final RegistryEvent.Register<Block> ev) {
+        for (final ModBlocks block : ModBlocks.values()) {
             block.get().setRegistryName(MMDLibTest.MODID, block.name().toLowerCase());
             block.get().setCreativeTab(CreativeTabs.MISC);
             ev.getRegistry().register(block.get());
@@ -43,11 +45,11 @@ public enum ModBlocks implements Supplier<Block> {
     }
 
     @SubscribeEvent
-    public static void registerItems(RegistryEvent.Register<Item> ev) {
-        for (ModBlocks block : ModBlocks.values()) {
-            ResourceLocation name = block.get().getRegistryName();
+    public static void registerItems(final RegistryEvent.Register<Item> ev) {
+        for (final ModBlocks block : ModBlocks.values()) {
+            final ResourceLocation name = block.get().getRegistryName();
             if (name != null) {
-                ItemBlock ib = new ItemBlock(block.get());
+                final ItemBlock ib = new ItemBlock(block.get());
                 ib.setRegistryName(name.getResourceDomain(), "block_" + name.getResourcePath());
                 ib.setCreativeTab(CreativeTabs.MISC);
                 ev.getRegistry().register(ib);

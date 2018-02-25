@@ -10,6 +10,7 @@ import com.mcmoddev.lib.container.gui.layout.GridLayout;
 import com.mcmoddev.lib.container.gui.layout.VerticalStackLayout;
 import com.mcmoddev.lib.container.gui.util.Padding;
 import com.mcmoddev.lib.feature.FluidTankFeature;
+import com.mcmoddev.lib.feature.ForgeEnergyBatteryFeature;
 import com.mcmoddev.lib.feature.ItemInventoryFeature;
 import com.mcmoddev.lib.feature.PlayerInventoryFeature;
 import com.mcmoddev.lib.tile.MMDFeaturesTileEntity;
@@ -52,6 +53,8 @@ public class GuiTestTileA extends MMDFeaturesTileEntity {
 
         this.addFeature(new PlayerInventoryFeature(PlayerInventory.INVENTORY, 9));
         this.addFeature(new PlayerInventoryFeature(PlayerInventory.QUICKBAR, 9));
+
+        this.addFeature(new ForgeEnergyBatteryFeature("battery", 50000));
     }
 
     @Override
@@ -59,12 +62,13 @@ public class GuiTestTileA extends MMDFeaturesTileEntity {
     @SideOnly(Side.CLIENT)
     public IWidgetGui getRootWidgetGui(@Nonnull GuiContext context) {
         return new VerticalStackLayout()
-            .addPiece(new GridLayout(9, 3)
-                .addPiece(new FeatureWrapperGui(context, this, "inputs_1"), 0, 1, 2, 2)
-                .addPiece(new FeatureWrapperGui(context, this, "inputs_2"), 3, 1, 3, 2)
-                .addPiece(new FeatureWrapperGui(context, this, "inputs_3"), 7, 1, 2, 2)
-                .addPiece(new FeatureWrapperGui(context, this, "fluid_a"), 2, 0, 1, 3)
-                .addPiece(new FeatureWrapperGui(context, this, "fluid_b"), 6, 0, 1, 3)
+            .addPiece(new GridLayout(10, 3)
+                .addPiece(new FeatureWrapperGui(context, this, "battery"), 0, 0, 1, 3)
+                .addPiece(new FeatureWrapperGui(context, this, "inputs_1"), 1, 1, 2, 2)
+                .addPiece(new FeatureWrapperGui(context, this, "inputs_2"), 4, 1, 3, 2)
+                .addPiece(new FeatureWrapperGui(context, this, "inputs_3"), 8, 1, 2, 2)
+                .addPiece(new FeatureWrapperGui(context, this, "fluid_a"), 3, 0, 1, 3)
+                .addPiece(new FeatureWrapperGui(context, this, "fluid_b"), 7, 0, 1, 3)
             )
             .addPiece(new FeatureWrapperGui(context, this, "player_inventory")
                 .setPadding(Padding.top(7))
