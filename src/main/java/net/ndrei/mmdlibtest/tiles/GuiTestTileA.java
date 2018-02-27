@@ -22,11 +22,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class GuiTestTileA extends MMDFeaturesTileEntity {
     public GuiTestTileA() {
         super();
-    }
-
-    @Override
-    protected void initFeatures() {
-        super.initFeatures();
 
         this.addFeature(new ItemInventoryFeature("inputs_1", 4,
             (slot, stack) -> !stack.isEmpty() && (stack.getItem() == Items.APPLE),
