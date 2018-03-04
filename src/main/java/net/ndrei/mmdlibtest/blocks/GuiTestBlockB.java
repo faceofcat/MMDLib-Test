@@ -6,6 +6,6 @@ import net.ndrei.mmdlibtest.tiles.GuiTestTileB;
 
 public class GuiTestBlockB extends MMDBlockWithTile<GuiTestTileB> {
     public GuiTestBlockB() {
-        super(GuiTestTileB.class, Material.ROCK);
+        super(GuiTestTileB.class, GuiTestTileB::new, Material.ROCK);
     }
 }
